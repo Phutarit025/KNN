@@ -29,7 +29,7 @@ html_7 = """
 st.markdown(html_7, unsafe_allow_html=True)
 
 # --- โหลดข้อมูล iris.csv ---
-dt = pd.read_csv("./data/iris.csv")
+dt =pd.read_csv("./data/iris.csv")
 st.write(dt.head(10))
 
 # --- สรุปข้อมูลเพื่อแสดง bar chart ---
