@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
-import os
+
 
 # --- Header ---
 st.header("Tiw")
