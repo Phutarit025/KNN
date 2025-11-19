@@ -1,8 +1,7 @@
-from sklearn.neighbors import KNeighborsClassifier
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
 import os
 
 # --- Header ---
@@ -11,7 +10,6 @@ st.image(os.path.join("img", "Tiw.jpg"))
 
 # --- Columns แสดงรูปดอกไม้ ---
 col1, col2, col3 = st.columns(3)
-
 with col1:
     st.header("Versicolor")
     st.image(os.path.join("img", "iris1.jpg"))
@@ -24,12 +22,11 @@ with col3:
 
 # --- HTML Section สถิติข้อมูล ---
 html_7 = """
-<div style="background-color:#EC7063;padding:15px;border-radius:15px 15px 15px 15px;border-style:solid;border-color:black">
+<div style="background-color:#EC7063;padding:15px;border-radius:15px;border-style:solid;border-color:black">
 <center><h5>สถิติข้อมูลดอกไม้</h5></center>
 </div>
 """
 st.markdown(html_7, unsafe_allow_html=True)
-st.markdown("")
 
 # --- โหลดข้อมูล iris.csv ---
 csv_path = os.path.join("data", "iris.csv")
@@ -37,12 +34,7 @@ dt = pd.read_csv(csv_path)
 st.write(dt.head(10))
 
 # --- สรุปข้อมูลเพื่อแสดง bar chart ---
-dt1 = dt['petallength'].sum()
-dt2 = dt['petalwidth'].sum()
-dt3 = dt['sepallength'].sum()
-dt4 = dt['sepalwidth'].sum()
-
-dx = [dt1, dt2, dt3, dt4]
+dx = [dt['petallength'].sum(), dt['petalwidth'].sum(), dt['sepallength'].sum(), dt['sepalwidth'].sum()]
 dx2 = pd.DataFrame(dx, index=["petallength", "petalwidth", "sepallength", "sepalwidth"], columns=["Sum"])
 
 if st.button("แสดงการจินตทัศน์ข้อมูล"):
@@ -52,12 +44,11 @@ else:
 
 # --- HTML Section ทำนายข้อมูล ---
 html_8 = """
-<div style="background-color:#6BD5DA;padding:15px;border-radius:15px 15px 15px 15px;border-style:solid;border-color:black">
+<div style="background-color:#6BD5DA;padding:15px;border-radius:15px;border-style:solid;border-color:black">
 <center><h5>ทำนายข้อมูล</h5></center>
 </div>
 """
 st.markdown(html_8, unsafe_allow_html=True)
-st.markdown("")
 
 # --- Input ข้อมูลจากผู้ใช้ ---
 pt_len = st.slider("กรุณาเลือกข้อมูล petal.length", float(dt['petallength'].min()), float(dt['petallength'].max()))
@@ -72,7 +63,7 @@ if st.button("ทำนายผล"):
     knn_model = KNeighborsClassifier(n_neighbors=3)
     knn_model.fit(X, y)
 
-    x_input = np.array([[pt_len, pt_wd, sp_len, sp_wd]])  # ข้อมูลผู้ใช้
+    x_input = np.array([[pt_len, pt_wd, sp_len, sp_wd]])
     out = knn_model.predict(x_input)
     st.write("ผลการทำนาย:", out[0])
 
