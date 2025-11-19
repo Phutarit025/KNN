@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.header("Fluke")
-st.image("./img/fluke.jpg")
+st.header("Tiw")
+st.image("./img/Tiw.jpg")
 
 col1, col2, col3 = st.columns(3)
 
