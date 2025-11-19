@@ -6,7 +6,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 # --- Header ---
 st.header("Tiw")
-st.image(os.path.join("img", "Tiw.jpg"))
+st.image("./img/Tiw.jpg")
 
 # --- Columns แสดงรูปดอกไม้ ---
 col1, col2, col3 = st.columns(3)
